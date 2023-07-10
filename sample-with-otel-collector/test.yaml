@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: quick-start-go
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: quick-start-go
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: quick-start-go
+    spec:
+      containers:
+        - name: quick-start-go
+          image: localhost:5000/my-image
