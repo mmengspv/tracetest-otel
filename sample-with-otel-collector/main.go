@@ -27,7 +27,8 @@ var tracer trace.Tracer
 func newExporter(ctx context.Context) (sdktrace.SpanExporter, error) {
 	ctx, cancel := context.WithTimeout(ctx, time.Second)
 	defer cancel()
-	conn, err := grpc.DialContext(ctx, "http://otel-collector.tracetest:4317",
+
+	conn, err := grpc.DialContext(ctx, "localhost:8317",
 		// Note the use of insecure transport here. TLS is recommended in production.
 		grpc.WithTransportCredentials(insecure.NewCredentials()),
 		grpc.WithBlock(),
@@ -47,17 +48,10 @@ func newExporter(ctx context.Context) (sdktrace.SpanExporter, error) {
 
 func newTraceProvider(exp sdktrace.SpanExporter) *sdktrace.TracerProvider {
 	// Ensure default SDK resources and the required service name are set.
-	r, err := resource.Merge(
-		resource.Default(),
-		resource.NewWithAttributes(
-			semconv.SchemaURL,
-			semconv.ServiceNameKey.String(svcName),
-		),
+	r := resource.NewWithAttributes(
+		semconv.SchemaURL,
+		semconv.ServiceNameKey.String(svcName),
 	)
-
-	if err != nil {
-		panic(err)
-	}
 
 	tp := sdktrace.NewTracerProvider(
 		sdktrace.WithBatcher(exp),
