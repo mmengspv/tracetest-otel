@@ -6,6 +6,11 @@
       "matchPackageNames": ["github.com/gorilla/mux"],
       "groupName": "gomod",
       "allowedVersions": "/^v[0-9]+\\.[0-9]+\\.[0-9]+(\\.[0-9]+)?$/"
+    },
+    {
+      "matchPackageNames": ["go.opentelemetry.io/otel"],
+      "groupName": "gomod",
+      "allowedVersions": "/^v1\\.1[0-9]+\\.[0-9]+(\\.[0-9]+)?$/"
     }
   ]
 }
