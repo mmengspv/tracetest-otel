@@ -22,10 +22,10 @@
   "customManagers": [
     {
       "customType": "regex",
-      "fileMatch": ["test\\.yml$"],
+      "fileMatch": ["test.yml$"],
       "datasourceTemplate": "custom.local_datasource",
       "matchStrings": [
-        "#\\s*renovate:\\s*(datasource=(?<datasource>.*?)\\s*)?depName=(?<depName>.*?)(\\s*versioning=(?<versioning>.*?))?\\s*\\w*:\\s*[\"']?(?<currentValue>.+?)[\"']?\\s"
+        "something_version: (?<currentValue>.*) # (?<datasource>.*?)/(?<depName>.*?)(\\&versioning=(?<versioning>.*?))?\\s"
       ],
       "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
     }
