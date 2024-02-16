@@ -5,7 +5,7 @@
     {
       "matchPackageNames": ["github.com/gorilla/mux"],
       "groupName": "gomod",
-      "extractVersion": "/^v1\\.6\\.[0-9]+(\\.[0-9]+)?$/"
+      "allowedVersions": "/^v1\\.6\\.[0-9]+(\\.[0-9]+)?$/"
     }
   ]
 }
