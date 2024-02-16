@@ -7,7 +7,7 @@
       "allowedVersions": "/^v[0-9]+\\.[0-9]+\\.[0-9]+(\\.[0-9]+)?$/"
     },
     {
-      "matchPackageNames": ["go.opentelemetry.io/otel/*"],
+      "matchPackagePatterns": ["go.opentelemetry.io/otel/*"],
       "allowedVersions": "/^v1.1[0-9]+\\.[0-9]+(\\.[0-9]+)?$/"
     }
   ]
