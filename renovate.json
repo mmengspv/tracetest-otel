@@ -3,10 +3,8 @@
   "extends": ["config:recommended"],
   "packageRules": [
     {
-      "matchUpdateTypes": ["minor", "patch"],
-      "groupName": "Gorilla Mux Updates",
-      "packageNames": ["github.com/gorilla/mux"],
-      "matchDepPatterns": "^1\\.6\\.\\d+$"
+      "matchPackageNames": ["github.com/gorilla/mux"],
+      "allowedVersions": "^1\\.6\\.\\d+$"
     }
   ]
 }
