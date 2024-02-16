@@ -26,8 +26,7 @@
       "datasourceTemplate": "custom.local_datasource",
       "matchStrings": [
         "something_version: (?<currentValue>.*) # (?<datasource>.*?)/(?<depName>.*?)(\\&versioning=(?<versioning>.*?))?\\s"
-      ],
-      "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
+      ]
     }
   ]
 }
