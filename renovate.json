@@ -4,7 +4,7 @@
   "packageRules": [
     {
       "matchPackageNames": ["github.com/gorilla/mux"],
-      "allowedVersions": "^1\\.6\\.\\d+$"
+      "allowedVersions": "/^1\\.6\\.[0-9]+(\\.[0-9]+)?$/"
     }
   ]
 }
