@@ -13,9 +13,9 @@
   ],
   "customDatasources": {
     "local_datasource": {
-      "defaultRegistryUrlTemplate": "file://dependencies/versiontracker.json",
+      "defaultRegistryUrlTemplate": "https://api.github.com/repos/gorilla/mux/releases",
       "transformTemplates": [
-        "{ \"releases\": $map($, function($v) { { \"version\": $v.version, \"sourceUrl\": $v.filelink } }) }"
+        "{ \"releases\": $map($, function($v) { { \"version\": $v.tag_name, \"sourceUrl\": $v.filelink } }) }"
       ]
     }
   },
