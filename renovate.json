@@ -10,5 +10,24 @@
       "matchPackagePatterns": ["go.opentelemetry.io/otel/*"],
       "allowedVersions": "/^v1.1[0-9]+\\.[0-9]+(\\.[0-9]+)?$/"
     }
+  ],
+  "customDatasources": {
+    "local_datasource": {
+      "defaultRegistryUrlTemplate": "file://versiontracker.json",
+      "transformTemplates": [
+        "{ \"releases\": $map($, function($v) { { \"version\": $v.version, \"sourceUrl\": $v.filelink } }) }"
+      ]
+    }
+  },
+  "customManagers": [
+    {
+      "customType": "regex",
+      "fileMatch": ["test\\.yml$"],
+      "datasourceTemplate": "custom.local_datasource",
+      "matchStrings": [
+        "#\\s*renovate:\\s*(datasource=(?<datasource>.*?)\\s*)?depName=(?<depName>.*?)(\\s*versioning=(?<versioning>.*?))?\\s*\\w*:\\s*[\"']?(?<currentValue>.+?)[\"']?\\s"
+      ],
+      "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
+    }
   ]
 }
