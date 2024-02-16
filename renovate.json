@@ -10,7 +10,7 @@
     {
       "matchPackageNames": ["go.opentelemetry.io/otel"],
       "groupName": "gomod",
-      "allowedVersions": "/^v1\\.1[0-9]+\\.[0-9]+(\\.[0-9]+)?$/"
+      "allowedVersions": "/^v1.1[0-9]+\\.[0-9]+(\\.[0-9]+)?$/"
     }
   ]
 }
