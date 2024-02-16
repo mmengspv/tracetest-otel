@@ -1,6 +1,12 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:recommended"],
+  "customDatasources": {
+    "nginx": {
+      "defaultRegistryUrlTemplate": "https://nginx.org/download",
+      "format": "html"
+    }
+  },
   "packageRules": [
     {
       "matchPackageNames": ["github.com/gorilla/mux"],
@@ -9,23 +15,19 @@
     {
       "matchPackagePatterns": ["go.opentelemetry.io/otel/*"],
       "allowedVersions": "/^v1.1[0-9]+\\.[0-9]+(\\.[0-9]+)?$/"
+    },
+    {
+      "matchDatasources": ["custom.nginx"],
+      "extractVersion": "^nginx-(?<version>.+)\\.tar\\.gz$"
     }
   ],
-  "customDatasources": {
-    "local_datasource": {
-      "defaultRegistryUrlTemplate": "https://api.github.com/repos/gorilla/mux/releases",
-      "transformTemplates": [
-        "{ \"releases\": $map($, function($v) { { \"version\": $v.tag_name, \"sourceUrl\": $v.filelink } }) }"
-      ]
-    }
-  },
   "customManagers": [
     {
       "customType": "regex",
       "fileMatch": ["test.yml$"],
-      "datasourceTemplate": "custom.local_datasource",
+      "datasourceTemplate": "custom.nginx",
       "matchStrings": [
-        "something_version: (?<currentValue>.*) # (?<datasource>.*?)/(?<depName>.*?)(\\&versioning=(?<versioning>.*?))?\\s"
+        "VERSION: (?<currentValue>.*) # (?<datasource>.*?)/(?<depName>.*?)(\\&versioning=(?<versioning>.*?))?\\s"
       ]
     }
   ]
